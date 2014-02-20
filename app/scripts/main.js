@@ -96,7 +96,7 @@ function orthographicProjection(width, height) {
 		.clipExtent([[1, 1], [width - 1, height - 1]])
 		.translate([width / 2, height / 2])
 		.scale(width / 2 - 10)
-		.rotate([0, -30]);
+		.rotate([0, -10]);
 }
 
 $().ready(go); 
