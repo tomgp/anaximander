@@ -1,0 +1,45 @@
+svg{
+  border: #000 1px solid;
+}
+
+.foreground {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1px;
+  pointer-events: all;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+
+.foreground.zooming {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+}
+
+.graticule {
+  fill: none;
+  stroke: #bbb;
+  stroke-width: .5px;
+  stroke-dasharray: 1,1;
+}
+
+.land {
+  fill: #FFF;
+  stroke: #333;
+}
+
+.country {
+ fill: #666;
+  stroke: #333; 
+}
+
+.mesh {
+  stroke: #333;
+  stroke-width: .5px;
+  fill: none;
+}
+
+.point {
+  fill: #FFF;
+  stroke: #000;
+}

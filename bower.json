@@ -1,0 +1,11 @@
+{
+  "name": "anaximander",
+  "private": true,
+  "dependencies": {
+    "sass-bootstrap": "~3.0.0",
+    "jquery": "~1.10.2",
+    "d3": "~3.4.2",
+    "topojson": "~1.4.6"
+  },
+  "devDependencies": {}
+}
