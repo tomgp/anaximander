@@ -15,19 +15,18 @@ function go(){
 			countries = topojson.feature(world, world.objects.countries).features,
 			borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a != b; })
 
-		console.log( world.objects.countries );
-
 		var mainView = d3.select("#main-map").append("svg")
 			.attr("width", width)
 			.attr("height", height)
 			.call(drawMap, path, true);
 
-		d3.selectAll("svg")
-			.data(countries)
-				.enter()
-				.append("path")
-				.attr("class", "country foreground");
-	
+		mainView.selectAll(".foreground")
+			.call(d3.geo.zoom().projection(projection)
+			.scaleExtent([projection.scale() * .7, projection.scale() * 10])
+			.on("zoom.redraw", function() {
+				d3.event.sourceEvent.preventDefault();
+				mainView.selectAll("path").attr("d", path);
+			}));
 
 		d3.selectAll("svg").insert("path", ".foreground")
 			.datum(land)
