@@ -1,8 +1,4 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,53 +23,29 @@
 
         <div class="container">
             <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li><a href="#">SVG</a></li>
-                    <li><a href="#">PNG</a></li>
-                </ul>
-                <h3 class="text-muted">Anaximander</h3>
+                <h3 class="text-muted">Simple locator</h3>
             </div>
             <div class="view" id="main-map"></div>
-            <div class="UI" id="controls">Controls</div>
+            <div class="UI" id="controls"><button id="save-button">SAVE</button></div>
+            <div id="image-list"><canvas id="image-scratch" width="800" height="800"></canvas></div>
 
             <div class="footer">
                 <p>
-                    <a href="http://en.wikipedia.org/wiki/Anaximander">About Anaximander</a>
+                    <a href="http://www.twitter.com/tomp">@tomp</a>
                 </p>
             </div>
 
         </div>
 
 
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
         <script src="bower_components/jquery/jquery.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
 
-
-        <!-- build:js scripts/plugins.js -->
-        <script src="bower_components/sass-bootstrap/js/affix.js"></script>
-        <script src="bower_components/sass-bootstrap/js/alert.js"></script>
-        <script src="bower_components/sass-bootstrap/js/dropdown.js"></script>
-        <script src="bower_components/sass-bootstrap/js/tooltip.js"></script>
-        <script src="bower_components/sass-bootstrap/js/modal.js"></script>
-        <script src="bower_components/sass-bootstrap/js/transition.js"></script>
-        <script src="bower_components/sass-bootstrap/js/button.js"></script>
-        <script src="bower_components/sass-bootstrap/js/popover.js"></script>
-        <script src="bower_components/sass-bootstrap/js/carousel.js"></script>
-        <script src="bower_components/sass-bootstrap/js/scrollspy.js"></script>
-        <script src="bower_components/sass-bootstrap/js/collapse.js"></script>
-        <script src="bower_components/sass-bootstrap/js/tab.js"></script>
         <script src="bower_components/d3/d3.js"></script>
         <script src="bower_components/topojson/topojson.js"></script>
-        <script src="http://d3js.org/queue.v1.min.js"></script>
-        <!-- endbuild -->
 
-        <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/d3.geo.zoom.js"></script>
-        <script src="scripts/ui.js"></script>
+        <script src="scripts/svg-save.js"></script>
         <script src="scripts/main.js"></script>
-        <!-- endbuild -->
+
 </body>
 </html>

@@ -1,12 +1,10 @@
 
 function go(){
 	var degrees = 180 / Math.PI,
-	    width = 400,
-	    height = 400;
+	    width = $('.view').width(),
+	    height = $('.view').height();
 
 	var projection = orthographicProjection(width,height);
-
-
 
     d3.json("data/world-110m.json", function(error, world) {
 		var path = d3.geo.path().projection(projection);
@@ -18,6 +16,7 @@ function go(){
 		var mainView = d3.select("#main-map").append("svg")
 			.attr("width", width)
 			.attr("height", height)
+			.attr("id", "locator-map")
 			.call(drawMap, path, true);
 
 		mainView.selectAll(".foreground")
@@ -41,7 +40,7 @@ function go(){
 					return d.id;
 				}
 			});
-		
+
 		mainView.selectAll(".foreground")
 			.call(
 				d3.behavior.drag()
@@ -54,6 +53,9 @@ function go(){
 		);
 
 	    mainView.selectAll("path").attr("d", path);
+
+	    $('#save-button').on('click', getSVG);
+
 	});
 }
 
@@ -66,27 +68,27 @@ function drawMap(svg, path, mousePoint) {
 		.attr("class", "graticule")
 		.attr("d", path);
 
-  svg.append("path")
-	.datum({type: "Sphere"})
-	.attr("class", "foreground")
-	.attr("d", path)
-	.on("mousedown.grab", function() {
-		var point;
+	svg.append("path")
+		.datum({type: "Sphere"})
+		.attr("class", "foreground")
+		.attr("d", path)
+		.on("mousedown.grab", function() {
+			var point;
 
-		if (mousePoint){ 
-			point = svg.insert("path", ".foreground")
-				.datum({type: "Point", coordinates: projection.invert(d3.mouse(this))})
-				.attr("class", "point")
-				.attr("d", path);
-		}
+			if (mousePoint){ 
+				point = svg.insert("path", ".foreground")
+					.datum({type: "Point", coordinates: projection.invert(d3.mouse(this))})
+					.attr("class", "point")
+					.attr("d", path);
+			}
 
-        var path = d3.select(this).classed("zooming", true),
-            w = d3.select(window).on("mouseup.grab", function() {
-              path.classed("zooming", false);
-              w.on("mouseup.grab", null);
-              if (mousePoint) point.remove();
-            });
-      });
+		    var path = d3.select(this).classed("zooming", true),
+		        w = d3.select(window).on("mouseup.grab", function() {
+		          path.classed("zooming", false);
+		          w.on("mouseup.grab", null);
+		          if (mousePoint) point.remove();
+		        });
+		});
 }
 
 function orthographicProjection(width, height) {
@@ -98,5 +100,7 @@ function orthographicProjection(width, height) {
 		.scale(width / 2 - 10)
 		.rotate([0, -10]);
 }
+
+
 
 $().ready(go); 
